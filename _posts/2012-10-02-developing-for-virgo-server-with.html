@@ -1,0 +1,14 @@
+---
+layout: post
+title: Developing for Virgo server with Eclipse PDE
+date: '2012-10-02T10:01:00.000+02:00'
+author: Giamma
+tags:
+- Virgo
+- Virgo Tools
+modified_time: '2012-10-02T10:09:25.949+02:00'
+blogger_id: tag:blogger.com,1999:blog-7876506089821014047.post-8133470315995673507
+blogger_orig_url: https://devshards.blogspot.com/2012/10/developing-for-virgo-server-with.html
+---
+
+Last week I pushed to github an Eclipse plug-in released under the <a href="http://www.eclipse.org/legal/epl-v10.html" target="_blank">EPL</a> license that allows using <a href="http://www.eclipse.org/pde/" target="_blank">PDE</a> plug-in projects with <a href="http://wiki.eclipse.org/Virgo/Tooling" target="_blank">Virgo Tools</a>. Source code, binaries and documentation are available here: &nbsp; <a href="http://github.com/giamma/pde2virgo">http://github.com/giamma/pde2virgo</a><br />&nbsp; <br />The plug-in is pretty simple: it contributes a new builder to a PDE plug-in project and the builder takes care of copying the content of the <b>META-INF</b> folder, as well as any <b>library</b> referred by the <b>Bundle-ClassPath</b> header, to the project binary folder, where Virgo Tools expect those resources to be located. <br />&nbsp; <br />To develop for Virgo using PDE you also have to properly configure the PDE <b>target</b> <b>platform</b> so that your plug-ins compile against the Virgo bundle repository. Plus, you must add the <b>OSGi Bundle Nature</b> to your PDE Plug-in projects, otherwise Virgo Tools won't let you deploy them to the server instance. More details are available in the github project wiki <a href="https://github.com/giamma/pde2virgo/wiki">https://github.com/giamma/pde2virgo/wiki</a><br />&nbsp; <br />I originally developed the plug-in in my spare time when looking for a solution that would allow me to develop OSGi bundles for Virgo Server using PDE plug-in projects rather than Virgo Tools' OSGi bundle projects. The plug-in is still affected by a couple of minor issues, but it works well and has been used by about ten colleagues of mine in the last three months. I decided to release it to the public because of this discussion <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=329198">https://bugs.eclipse.org/bugs/show_bug.cgi?id=329198</a> and because Eclipse gave me a lot in the last 8 years, so it was my turn to give back a little.<br /><br />After some months developing with Eclipse Virgo Server for Apache Tomcat I can state that I am really glad I chose it as the target application server: it is a high-quality, lightweight OSGi enterprise app server capable of blending traditional Web Applications with OSGi applications, that provides great diagnostic features, meaningful error messages and that can significantly reduce your development time thanks to a fast start-up time and the ability to hot-swap OSGi bundles. Its Eclipse &nbsp; integration, Virgo Tools, still needs some work, though. <br />&nbsp; <br />

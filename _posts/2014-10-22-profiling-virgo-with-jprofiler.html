@@ -1,0 +1,15 @@
+---
+layout: post
+title: Profiling Virgo with JProfiler
+date: '2014-10-22T13:20:00.002+02:00'
+author: Giamma
+tags:
+- Virgo
+- OSGi
+- Profiling
+modified_time: '2014-10-22T13:20:46.875+02:00'
+blogger_id: tag:blogger.com,1999:blog-7876506089821014047.post-1342554986420400356
+blogger_orig_url: https://devshards.blogspot.com/2014/10/profiling-virgo-with-jprofiler.html
+---
+
+The information below has been tested with JProfile 5 on Linux 64bit, and assumes that the JProfiler Agent is installed in folder <code>/opt/jprofiler5.</code><br /><code><span style="font-size: small;"><span style="font-family: inherit;"></span></span> </code>While this post refers to a rather old JProfiler version, I am sure the principles apply also to more recent JProfiler version.<code>&nbsp;</code><br /><code>&nbsp;</code><br />The following environment variables must be set <strong>before starting Virgo</strong>: <br />   <blockquote class="tr_bq"><pre>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/jprofiler5/bin/linux-x64<br />export JAVA_OPTS="$JAVA_OPTS -Xbootclasspath/a:/opt/jprofiler5/bin/agent.jar -agentpath:/opt/jprofiler5/bin/linux-x64/libjprofilerti.so=port=8849" <br /></pre></blockquote>If your JProfiler installation is not located in <code>/opt/jprofiler5</code> change the above paths accordingly.<br /><br />    <div class="wiking flash tip">A convenient method for setting the  environment variables consists in creating a <b>setenv.sh</b> file in the Virgo  bin folder. If such file exists, it will be invoked by the <b>startup.sh</b>  script.</div><div class="wiking flash tip">&nbsp;</div>Additionally, it is necessary to modify the <code>java6-server.profile</code> file contained in the <code>&lt;VIRGO_HOME&gt;/configuration</code> folder to ensure that the property <code>org.osgi.framework.bootdelegation</code> contains the <code>com.jprofiler</code> package, as in the example below.<br />Note: <u>do not replace the file content, just add the <code>com.jprofile.*,\</code> line</u>.<br />   <blockquote class="tr_bq"><pre><code class="a syntaxhl"><span class="CodeRay">org.osgi.framework.bootdelegation = \<br /> org.eclipse.virgo.osgi.extensions.*,\<br /> org.eclipse.virgo.osgi.launcher.*,\<br /> org.eclipse.virgo.kernel.authentication,\<br /> com.sun.*,\<br /> com.jprofiler.*,\<br /> javax.xml.*,\<br /> org.apache.xerces.jaxp.*,\<br /> org.w3c.*,\<br /> org.xml.*,\<br /> sun.*</span></code></pre></blockquote>After applying the above changes, start Virgo and connect using the JProfiler GUI.

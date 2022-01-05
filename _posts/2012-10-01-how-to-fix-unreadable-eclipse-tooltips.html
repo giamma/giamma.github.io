@@ -1,0 +1,14 @@
+---
+layout: post
+title: How to fix unreadable Eclipse tooltips in Ubuntu 12.04
+date: '2012-10-01T22:43:00.001+02:00'
+author: Giamma
+tags:
+- ubuntu
+- Eclipse
+modified_time: '2012-10-01T22:43:35.808+02:00'
+blogger_id: tag:blogger.com,1999:blog-7876506089821014047.post-802301829391316940
+blogger_orig_url: https://devshards.blogspot.com/2012/10/how-to-fix-unreadable-eclipse-tooltips.html
+---
+
+[Originally posted on G+ on May 7th 2012] <br /><br />Similarly  to what happened in earlier versions of Ubuntu, the default tooltip  colors of the Ambiance theme (Ubuntu default) results in unreadable  Eclipse tooltips (black foreground text on black background).<br /><br />In  earlier versions of Ubuntu you could edit the Ambiance theme via Gnome  control panel and change the tooltip colors. Unluckily, the new  "Appearance" settings dialog of Ubuntu 12.04 allows you to select the  theme but you cannot tweak its colors anymore. <br /><br />So here is how you can fix the problem.<br />Install gnome-color-chooser:<br /><blockquote class="tr_bq"><b>sudo apt-get install gnome-color-chooser</b>&nbsp;</blockquote>run the tool and switch to the <b>Specific</b> tab. Activate the <b>Tooltip</b> group and set your tooltip colors (I use black foreground on white  background). Then, at the bottom of the dialog select the value <b>Theme Default</b> for the profile combo and press apply. The next time you start Eclipse it will honour your tooltip colors.<br /><br />For those who may be interested, gnome-color-chooser will change your <b>~/.gtkrc-2.0</b> file.

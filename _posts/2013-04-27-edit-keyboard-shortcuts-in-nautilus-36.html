@@ -1,0 +1,13 @@
+---
+layout: post
+title: Edit keyboard shortcuts in Nautilus 3.6
+date: '2013-04-27T12:31:00.001+02:00'
+author: Giamma
+tags:
+- ubuntu
+modified_time: '2013-04-27T12:33:25.594+02:00'
+blogger_id: tag:blogger.com,1999:blog-7876506089821014047.post-6637247337930323620
+blogger_orig_url: https://devshards.blogspot.com/2013/04/edit-keyboard-shortcuts-in-nautilus-36.html
+---
+
+After upgrading to Ubuntu 13.04, I was a bit annoyed by a short-cut change: I have always used a lot <b>BackSpace</b> in Nautilus to go up one folder. Now, in Nautilus 3.6 this has been changed to <b>ALT-UP</b>.<br /><br />Luckily enough, even if there is no GUI for this, you can change Nautilus key bindings pretty easily.   To change "go up one folder" from ALT-UP to BackSpace, just edit<br /><br /><span style="font-size: large;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">~/.config/nautilus/accels&nbsp;</span></span><br /><br />with your favorite editor (mine is <a href="http://www.geany.org/" target="_blank"><b>geany</b></a>) and add this line at the end:<br /><br /><br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: large;">(gtk_accel_path "<actions>/ShellActions/Up" "BackSpace")&nbsp;</actions></span></span><br /><span style="font-size: large;"><actions><br /></actions></span><actions>Source: https://bugs.launchpad.net/ubuntu/+source/nautilus/+bug/1108637</actions>

@@ -1,0 +1,15 @@
+---
+layout: post
+title: Jericho HTML Parser
+date: '2012-10-01T22:40:00.001+02:00'
+author: Giamma
+tags:
+- Jericho
+- HTML
+- Parser
+modified_time: '2012-10-01T22:41:07.907+02:00'
+blogger_id: tag:blogger.com,1999:blog-7876506089821014047.post-6350526256987432040
+blogger_orig_url: https://devshards.blogspot.com/2012/10/originally-posted-on-g-on-february-6th.html
+---
+
+[Originally posted on G+ on February 6th 2012]<br /><br />Yesterday evening I was looking for a HTML parser that would be tolerant  wrt malformed documents. I first looked at Jericho HTML <a class="ot-anchor" href="http://jericho.htmlparser.net/">http://jericho.htmlparser.net</a> (I read about it a while back), and when looking for a comparison between Jericho and CyberNeko HTML Parser <a class="ot-anchor" href="http://sourceforge.net/projects/nekohtml/">http://sourceforge.net/projects/nekohtml/</a> (which is mentioned in the Jericho home page), I stumbled upon JSoup <a class="ot-anchor" href="http://jsoup.org/">http://jsoup.org/</a><br /><br />I immediately fell in love with JSoup because:<br /><br /><ol><li>it's open source under the MIT license</li><li>it's DOM oriented and declares to support HTML 5.0</li><li>it's a very small library with no dependencies (CyberNeko to the contrary depends on Apache Xerces)</li><li>it declares Android compatibility</li><li>it offers a decent API for performing HTTP requests (design looks similar to Apache HTTP Client)</li><li>it is fully documented and comes with several code examples</li></ol><br />I  made a quick test fetching and parsing a couple of HTML documents  resulting from the flow of a dynamic website and everything worked fine.  <br /><br />Don't know how it behaves on more complex pages, but the  positive comments I read in Stack Overflow and other sites give me good  hope.

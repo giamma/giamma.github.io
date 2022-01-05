@@ -1,0 +1,17 @@
+---
+layout: post
+title: Tinybundles, a little gem for OSGi testing
+date: '2013-05-30T10:12:00.001+02:00'
+author: Giamma
+tags:
+- Tinybundles
+- JUnit
+- OSGi
+- Extender
+- UnitTesting
+modified_time: '2013-05-30T10:12:29.183+02:00'
+blogger_id: tag:blogger.com,1999:blog-7876506089821014047.post-6052449746006279285
+blogger_orig_url: https://devshards.blogspot.com/2013/05/tinybundles-little-gem-for-osgi-testing.html
+---
+
+In my OSGi applications I often make use of the <a href="http://blog.osgi.org/2007/02/osgi-extender-model.html" target="_blank">OSGi extender pattern</a>. An excellent example is available on <a href="http://www.toedter.com/blog/?p=236" target="_blank">Kai's Toedter blog</a>.<br /><br />As Peter Kriens explained:<br /><blockquote class="tr_bq">In the Synchronous Bundle Listener event call back, the subsystem can  look at the resources of the bundle and check if there is anything of  its liking. If it is, it can use this resource to perform the necessary  initialization for the new bundles. <br /></blockquote><br />Writing unit tests for a <a href="http://www.osgi.org/javadoc/r4v43/core/org/osgi/framework/SynchronousBundleListener.html" target="_blank">Synchronous Bundle Listener</a> is often a tricky task. To test the behaviour of your extender you need to install and start (and later stop and uninstall) bundles via the OSGi API.<br /><br />The API allows you to install a bundle by passing in an InputStream opened from a bundle file. So, the simplest solution usually consists in packaging a small test bundle as a binary resource in the test case&nbsp; package, and to use the OSGi API from the test case class to install the bundle in the OSGi framework. This approach certainly works but is quite annoying because you need to repackage the test bundle every time you have to make a change.<br /><br />Some time ago I found a better solution: the <b>Tinybundles</b> library. The project documentation is <a href="https://ops4j1.jira.com/wiki/display/ops4j/Tinybundles" target="_blank">here</a>, while sources for the library are available on <a href="https://github.com/ops4j/org.ops4j.pax.tinybundles" target="_blank">github</a>.<br /><br />Tinybundles provides a convenient API to create an OSGi bundle from resources and classes available in your test case classpath:<br /><br /><pre class="brush: java;"><br />TinyBundle bundle = TinyBundles.bundle()<br />            .add( TestActivator.class )<br />            .add( HelloWorld.class )<br />            .set( Constants.BUNDLE_SYMBOLICNAME, "test.bundle" )<br />            .set( Constants.EXPORT_PACKAGE, <br />                HelloWorld.class.getPackage().getName() )<br />            .set( Constants.IMPORT_PACKAGE, <br />                "org.apache.commons.collections" )<br />            .set( Constants.BUNDLE_ACTIVATOR, <br />                TestActivator.class.getName() );<br /><br />InputStream is = bundle.build(TinyBundles.withBnd());        <br />Bundle installed = getBundleContext().installBundle("dummyLocation", is);<br />installed.start();<br /></pre><br />In this way you can generate bundles on-the-fly within your test case for the purpose of testing your bundle listeners. <br /><br />Simple, isn't it?
