@@ -9,7 +9,7 @@ I am a seasoned software professional with more than 2 decades of experience.
 
 I am also a proud dad of two kids and a hobbyist mountain-biker.
 
-I started messing around with computers in the late 80's, using a [Commodore 64](https://en.wikipedia.org/wiki/Commodore_64) with a floppy disk drive, a [dot matrix printer](https://en.wikipedia.org/wiki/Dot_matrix_printing) and a [2400 Baud modem](https://en.wikipedia.org/wiki/Modem") to connect
+I started messing around with computers in the late 80's, using a [Commodore 64](https://en.wikipedia.org/wiki/Commodore_64) with a floppy disk drive, a [dot matrix printer](https://en.wikipedia.org/wiki/Dot_matrix_printing) and a [2400 Baud modem](https://en.wikipedia.org/wiki/Modem) to connect
 to [BBSes](https://en.wikipedia.org/wiki/Bulletin_board_system), often running on another Commodore 64.
 
 I graduated in 2000 in software engineering and since then I have been working
